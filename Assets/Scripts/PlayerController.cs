@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // Include this to use UI elements
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,14 +9,12 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
 
     private Rigidbody rb;
-
-    // Reference to the Text UI element
-    public Text scoreText;
+    public Text scoreText; // Reference to the ScoreText UI element
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        UpdateScoreText(); // Initialize score text
+        UpdateScoreText(); // Update the score text when the game starts
     }
 
     void FixedUpdate()
@@ -33,8 +31,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Pickup"))
         {
             score++;
-            Debug.Log("Score: " + score);
-            UpdateScoreText(); // Update score text when score changes
+            UpdateScoreText(); // Update the score text when the player collects a coin
             other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Trap"))
@@ -57,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Method to update the score text
+    // Method to update the ScoreText UI element with the current score
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
