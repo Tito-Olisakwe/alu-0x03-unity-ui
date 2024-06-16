@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33614530873888636}
   - component: {fileID: 136428459276010026}
   - component: {fileID: 23691585722450110}
+  - component: {fileID: 114371959130985238}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Pickup
@@ -83,6 +84,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975295094901980}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114371959130985238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975295094901980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2410c23e7359b0942948c071c7009e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136428459276010026
 CapsuleCollider:
   m_ObjectHideFlags: 1
