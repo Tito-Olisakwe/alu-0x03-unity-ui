@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Include this to use UI elements
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    // Reference to the Text UI element
+    public Text scoreText;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        UpdateScoreText(); // Initialize score text
     }
 
     void FixedUpdate()
@@ -29,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             score++;
             Debug.Log("Score: " + score);
+            UpdateScoreText(); // Update score text when score changes
             other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Trap"))
@@ -49,5 +55,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    // Method to update the score text
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }
