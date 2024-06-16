@@ -29,5 +29,15 @@ public class PlayerController : MonoBehaviour
             score++;
             Debug.Log("Score: " + score);
         }
+        else if (other.gameObject.CompareTag("Trap"))
+        {
+            other.gameObject.SetActive(false);
+            score--;
+            Debug.Log("Score: " + score);
+        }
+        else if (other.gameObject.CompareTag("Goal"))
+        {
+            Debug.Log("You win!");
+        }
     }
 }
