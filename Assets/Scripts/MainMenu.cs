@@ -7,4 +7,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("maze");
     }
+
+    public void QuitMaze()
+    {
+        // This will not work in the Unity editor
+        Application.Quit();
+
+        // Add a debug log message to confirm the button press in the editor
+        Debug.Log("Quit Game");
+    }
 }
