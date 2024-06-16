@@ -11,12 +11,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public Text scoreText;  // Reference to the ScoreText UI element
     public Text healthText; // Reference to the HealthText UI element
+    public Text winLoseText; // Reference to the WinLoseText UI element
+    public Image winLoseBG; // Reference to the WinLoseBG UI element
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         UpdateScoreText(); // Update the score text when the game starts
         UpdateHealthText(); // Update the health text when the game starts
+        winLoseText.gameObject.SetActive(false); // Initially hide WinLoseText
+        winLoseBG.gameObject.SetActive(false); // Initially hide WinLoseBG
     }
 
     void FixedUpdate()
@@ -43,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Goal"))
         {
-            Debug.Log("You win!");
+            WinGame(); // Handle the win condition
         }
     }
 
@@ -51,8 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (health <= 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameOver(); // Handle the game over condition
         }
     }
 
@@ -66,5 +69,25 @@ public class PlayerController : MonoBehaviour
     void UpdateHealthText()
     {
         healthText.text = "Health: " + health.ToString();
+    }
+
+    // Method to handle the win condition
+    void WinGame()
+    {
+        winLoseText.text = "You Win!";
+        winLoseText.color = Color.black;
+        winLoseBG.color = Color.green;
+        winLoseText.gameObject.SetActive(true); // Show WinLoseText
+        winLoseBG.gameObject.SetActive(true); // Show WinLoseBG
+    }
+
+    // Method to handle the game over condition
+    void GameOver()
+    {
+        winLoseText.text = "Game Over!";
+        winLoseText.color = Color.white;
+        winLoseBG.color = Color.red;
+        winLoseText.gameObject.SetActive(true); // Show WinLoseText
+        winLoseBG.gameObject.SetActive(true); // Show WinLoseBG
     }
 }
