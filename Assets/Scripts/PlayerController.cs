@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour
         {
             GameOver(); // Handle the game over condition
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
     }
 
     // Method to update the ScoreText UI element with the current score
@@ -92,8 +97,6 @@ public class PlayerController : MonoBehaviour
         winLoseText.gameObject.SetActive(true); // Show WinLoseText
         winLoseBG.gameObject.SetActive(true); // Show WinLoseBG
         StartCoroutine(LoadScene(3)); // Wait 3 seconds before reloading the scene
-        // Commented out Debug.Log line
-        // Debug.Log("Game Over!");
     }
 
     // Coroutine to load the scene after a delay
