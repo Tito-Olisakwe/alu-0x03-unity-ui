@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
 
     private Rigidbody rb;
-    public Text scoreText; // Reference to the ScoreText UI element
+    public Text scoreText;  // Reference to the ScoreText UI element
+    public Text healthText; // Reference to the HealthText UI element
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         UpdateScoreText(); // Update the score text when the game starts
+        UpdateHealthText(); // Update the health text when the game starts
     }
 
     void FixedUpdate()
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Trap"))
         {
             health--;
-            Debug.Log("Health: " + health);
+            UpdateHealthText(); // Update the health text when the player hits a trap
         }
         else if (other.gameObject.CompareTag("Goal"))
         {
@@ -58,5 +60,11 @@ public class PlayerController : MonoBehaviour
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    // Method to update the HealthText UI element with the current health
+    void UpdateHealthText()
+    {
+        healthText.text = "Health: " + health.ToString();
     }
 }
