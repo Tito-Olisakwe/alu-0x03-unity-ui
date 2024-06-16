@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         winLoseBG.color = Color.green;
         winLoseText.gameObject.SetActive(true); // Show WinLoseText
         winLoseBG.gameObject.SetActive(true); // Show WinLoseBG
+        StartCoroutine(LoadScene(3)); // Wait 3 seconds before reloading the scene
     }
 
     // Method to handle the game over condition
@@ -89,5 +91,15 @@ public class PlayerController : MonoBehaviour
         winLoseBG.color = Color.red;
         winLoseText.gameObject.SetActive(true); // Show WinLoseText
         winLoseBG.gameObject.SetActive(true); // Show WinLoseBG
+        StartCoroutine(LoadScene(3)); // Wait 3 seconds before reloading the scene
+        // Commented out Debug.Log line
+        // Debug.Log("Game Over!");
+    }
+
+    // Coroutine to load the scene after a delay
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
